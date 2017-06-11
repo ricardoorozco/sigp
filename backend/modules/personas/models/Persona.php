@@ -1,11 +1,11 @@
 <?php
 
-namespace backend\modules\clientes\models;
+namespace backend\modules\personas\models;
 
 use Yii;
 
 /**
- * This is the model class for table "cliente".
+ * This is the model class for table "persona".
  *
  * @property integer $id
  * @property string $documento_numero
@@ -18,14 +18,19 @@ use Yii;
  * @property string $direccion_principal
  * @property string $direcciones
  * @property string $ubicacion
+ * @property integer $calificacion
+ * @property integer $sw_empleado
+ *
+ * @property Prestamo[] $prestamos
+ * @property PrestamoGarante[] $prestamoGarantes
  */
-class Cliente extends \yii\db\ActiveRecord {
+class Persona extends \yii\db\ActiveRecord {
 
     /**
      * @inheritdoc
      */
     public static function tableName() {
-        return 'cliente';
+        return 'persona';
     }
 
     /**
@@ -34,6 +39,7 @@ class Cliente extends \yii\db\ActiveRecord {
     public function rules() {
         return [
             [['documento_numero', 'primer_nombre', 'primer_apellido', 'telefono_principal', 'direccion_principal', 'ubicacion'], 'required'],
+            [['calificacion', 'sw_empleado'], 'integer'],
             [['documento_numero', 'primer_nombre', 'segundo_nombre', 'primer_apellido', 'segundo_apellido', 'telefono_principal', 'telefonos', 'direccion_principal', 'direcciones', 'ubicacion'], 'string', 'max' => 255],
             [['documento_numero'], 'unique'],
         ];
@@ -55,7 +61,23 @@ class Cliente extends \yii\db\ActiveRecord {
             'direccion_principal' => Yii::t('app', 'Direccion Principal'),
             'direcciones' => Yii::t('app', 'Direcciones'),
             'ubicacion' => Yii::t('app', 'Ubicacion'),
+            'calificacion' => Yii::t('app', 'Calificacion'),
+            'sw_empleado' => Yii::t('app', 'Sw Empleado'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPrestamos() {
+        return $this->hasMany(\backend\modules\prestamos\models\Prestamo::className(), ['cliente_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPrestamoGarantes() {
+        return $this->hasMany(\backend\modules\prestamos\models\PrestamoGarante::className(), ['persona_id' => 'id']);
     }
 
     public function getFullName() {

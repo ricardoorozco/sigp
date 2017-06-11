@@ -75,7 +75,7 @@ class SiteController extends Controller {
             \Yii::$app->end();
         }
         if (true) {
-            $prestamos = \backend\modules\clientes\models\Cliente::find()->all();
+            $prestamos = \backend\modules\prestamos\models\Prestamo::find()->all();
             return $this->render('index_admin', ['prestamos' => $prestamos]);
         }
     }

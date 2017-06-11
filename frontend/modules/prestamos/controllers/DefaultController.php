@@ -1,11 +1,11 @@
 <?php
 
-namespace backend\modules\clientes\controllers;
+namespace frontend\modules\prestamos\controllers;
 
 use yii\web\Controller;
 
 /**
- * Default controller for the `clientes` module
+ * Default controller for the `prestamos` module
  */
 class DefaultController extends Controller
 {

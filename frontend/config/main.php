@@ -18,6 +18,9 @@ return [
         'clientes' => [
             'class' => 'frontend\modules\clientes\Clientes',
         ],
+        'prestamos' => [
+            'class' => 'frontend\modules\prestamos\Prestamos',
+        ],
     ],
     'components' => [
         'request' => [

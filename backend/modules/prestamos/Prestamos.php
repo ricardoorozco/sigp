@@ -1,16 +1,16 @@
 <?php
 
-namespace backend\modules\clientes;
+namespace backend\modules\prestamos;
 
 /**
- * clientes module definition class
+ * prestamos module definition class
  */
-class Clientes extends \yii\base\Module
+class Prestamos extends \yii\base\Module
 {
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'backend\modules\clientes\controllers';
+    public $controllerNamespace = 'backend\modules\prestamos\controllers';
 
     /**
      * @inheritdoc

@@ -15,8 +15,11 @@ return [
         'usuarios' => [
             'class' => 'backend\modules\usuarios\Usuarios',
         ],
-        'clientes' => [
-            'class' => 'frontend\modules\clientes\Clientes',
+        'personas' => [
+            'class' => 'backend\modules\personas\Personas',
+        ],
+        'prestamos' => [
+            'class' => 'backend\modules\prestamos\Prestamos',
         ],
     ],
     'components' => [

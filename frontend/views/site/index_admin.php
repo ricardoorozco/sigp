@@ -84,24 +84,24 @@ $this->title = $this->params['h1'] . ' - ' . Yii::$app->name;
                                 </div>
                                 <div class="col-sm-12">
                                     <h2 class="brief">
-                                        <i>Fecha Limite: <?= (new DateTime('2017-07-28'))->format('d M Y') ?></i>
+                                        <i>Fecha Limite: <?= (new DateTime($prestamo->fecha_fin))->format('d M Y') ?></i>
                                         <br />
                                         <strong class="red">7 Días de atraso</strong>
                                     </h2>
                                     <div class="left col-xs-7">
-                                        <h2><?= \yii\helpers\Html::a($prestamo->fullName, Yii::$app->urlManager->createAbsoluteUrl(["clientes/cliente/view", "id" => $prestamo->id])) ?></h2>
+                                        <h2><?= \yii\helpers\Html::a($prestamo->cliente->fullName, Yii::$app->urlManager->createAbsoluteUrl(["clientes/cliente/view", "id" => $prestamo->cliente->id])) ?></h2>
                                         <ul class="list-unstyled">
                                             <li>
                                                 <i class="fa fa-money"></i> <strong>Prestamo:</strong><br />
-                                                <h2>15.000.000</h2>
+                                                <h2><?= number_format($prestamo->valor, 2, ',', '.') ?></h2>
                                             </li>
                                             <li>
                                                 <i class="fa fa-line-chart"></i> <strong>Ganancia Esperada:</strong><br />
-                                                <h2>2.000.000</h2>
+                                                <h2><?= number_format((($prestamo->valor_cuota * $prestamo->numero_cuotas) - $prestamo->valor), 2, ',', '.') ?></h2>
                                             </li>
                                             <li>
                                                 <i class="fa fa-briefcase"></i> <strong>Recaudado:</strong><br />
-                                                <h2>1.000.000</h2>
+                                                <h2><?= number_format($prestamo->total_abonado, 2, ',', '.') ?></h2>
                                             </li>
                                         </ul>
                                     </div>
@@ -112,11 +112,11 @@ $this->title = $this->params['h1'] . ' - ' . Yii::$app->name;
                                 <div class="col-xs-12 bottom text-center">
                                     <div class="col-xs-12 col-sm-6 emphasis">
                                         <p class="ratings">
-                                            <?php $color = $prestamo->calificacion < 3 ? 'red' : '' ?>
-                                            <a class="<?= $color ?>"><?= $prestamo->calificacion ?>.0</a>
+                                            <?php $color = $prestamo->cliente->calificacion < 3 ? 'red' : '' ?>
+                                            <a class="<?= $color ?>"><?= $prestamo->cliente->calificacion ?>.0</a>
                                             <?php
                                             $estrellasBuenas = 5;
-                                            $estrellasCliente = $prestamo->calificacion;
+                                            $estrellasCliente = $prestamo->cliente->calificacion;
                                             for ($i = 5; $i > 0; $i--) {
                                                 if ($estrellasCliente > 0) {
                                                     echo '<a href="#"><span class="fa fa-star ' . $color . '"></span></a>';
