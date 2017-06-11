@@ -66,13 +66,14 @@ $this->title = $this->params['h1'] . ' - ' . Yii::$app->name;
                             <li><a href="#">Y</a></li>
                             <li><a href="#">Z</a></li>
                             -->
+                            <?= count($prestamos) ?> Prestamo(s)
                         </ul>
                     </div>
 
                     <div class="clearfix"></div>
 
                     <?php
-                    foreach ($clientes as $key => $cliente) {
+                    foreach ($prestamos as $key => $prestamo) {
                         ?>
                         <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
                             <div class="well profile_view  ui-ribbon-container">
@@ -88,7 +89,7 @@ $this->title = $this->params['h1'] . ' - ' . Yii::$app->name;
                                         <strong class="red">7 Días de atraso</strong>
                                     </h2>
                                     <div class="left col-xs-7">
-                                        <h2><?= \yii\helpers\Html::a($cliente->fullName, Yii::$app->urlManager->createAbsoluteUrl(["clientes/cliente/view", "id" => $cliente->id])) ?></h2>
+                                        <h2><?= \yii\helpers\Html::a($prestamo->fullName, Yii::$app->urlManager->createAbsoluteUrl(["clientes/cliente/view", "id" => $prestamo->id])) ?></h2>
                                         <ul class="list-unstyled">
                                             <li>
                                                 <i class="fa fa-money"></i> <strong>Prestamo:</strong><br />
@@ -111,11 +112,11 @@ $this->title = $this->params['h1'] . ' - ' . Yii::$app->name;
                                 <div class="col-xs-12 bottom text-center">
                                     <div class="col-xs-12 col-sm-6 emphasis">
                                         <p class="ratings">
-                                            <?php $color = $cliente->calificacion < 3 ? 'red' : '' ?>
-                                            <a class="<?= $color ?>"><?= $cliente->calificacion ?>.0</a>
+                                            <?php $color = $prestamo->calificacion < 3 ? 'red' : '' ?>
+                                            <a class="<?= $color ?>"><?= $prestamo->calificacion ?>.0</a>
                                             <?php
                                             $estrellasBuenas = 5;
-                                            $estrellasCliente = $cliente->calificacion;
+                                            $estrellasCliente = $prestamo->calificacion;
                                             for ($i = 5; $i > 0; $i--) {
                                                 if ($estrellasCliente > 0) {
                                                     echo '<a href="#"><span class="fa fa-star ' . $color . '"></span></a>';
@@ -140,262 +141,6 @@ $this->title = $this->params['h1'] . ' - ' . Yii::$app->name;
                         <?php
                     }
                     ?>
-
-                    <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
-                        <div class="well profile_view">
-                            <div class="col-sm-12">
-                                <h2 class="brief">
-                                    <i>Fecha Limite: <?= (new DateTime('2017-07-28'))->format('d M Y') ?></i>
-                                    <br />
-                                    <strong class="green">Quedan 50 Días</strong>
-                                </h2>
-                                <div class="left col-xs-7">
-                                    <h2><?= \yii\helpers\Html::a('Jesus Leandro Salamanca', Yii::$app->urlManager->createAbsoluteUrl(["clientes/cliente/view", "id" => "1"])) ?></h2>
-                                    <ul class="list-unstyled">
-                                        <li>
-                                            <i class="fa fa-money"></i> <strong>Prestamo:</strong><br />
-                                            <h2>5.000.000</h2>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-line-chart"></i> <strong>Ganancia Esperada:</strong><br />
-                                            <h2>2.000.000</h2>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-briefcase"></i> <strong>Recaudado:</strong><br />
-                                            <h2>1.000.000</h2>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="right col-xs-5 text-center">
-                                    <img src="images/user.png" alt="" class="img-circle img-responsive">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 bottom text-center">
-                                <div class="col-xs-12 col-sm-6 emphasis">
-                                    <p class="ratings">
-                                        <a>4.0</a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star-o"></span></a>
-                                    </p>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 emphasis">
-                                    <button type="button" class="btn btn-success btn-xs"> <i class="fa fa-user">
-                                        </i> <i class="fa fa-comments-o"></i> </button>
-                                    <button type="button" class="btn btn-primary btn-xs">
-                                        <i class="fa fa-user"> </i> View Profile
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
-                        <div class="well profile_view">
-                            <div class="col-sm-12">
-                                <h2 class="brief">
-                                    <i>Fecha Limite: <?= (new DateTime('2017-07-28'))->format('d M Y') ?></i>
-                                    <br />
-                                    <strong class="green">Quedan 50 Días</strong>
-                                </h2>
-                                <div class="left col-xs-7">
-                                    <h2><?= \yii\helpers\Html::a('Jesus Leandro Salamanca', Yii::$app->urlManager->createAbsoluteUrl(["clientes/cliente/view", "id" => "1"])) ?></h2>
-                                    <ul class="list-unstyled">
-                                        <li>
-                                            <i class="fa fa-money"></i> <strong>Prestamo:</strong><br />
-                                            <h2>5.000.000</h2>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-line-chart"></i> <strong>Ganancia Esperada:</strong><br />
-                                            <h2>2.000.000</h2>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-briefcase"></i> <strong>Recaudado:</strong><br />
-                                            <h2>1.000.000</h2>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="right col-xs-5 text-center">
-                                    <img src="images/user.png" alt="" class="img-circle img-responsive">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 bottom text-center">
-                                <div class="col-xs-12 col-sm-6 emphasis">
-                                    <p class="ratings">
-                                        <a>4.0</a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star-o"></span></a>
-                                    </p>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 emphasis">
-                                    <button type="button" class="btn btn-success btn-xs"> <i class="fa fa-user">
-                                        </i> <i class="fa fa-comments-o"></i> </button>
-                                    <button type="button" class="btn btn-primary btn-xs">
-                                        <i class="fa fa-user"> </i> View Profile
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
-                        <div class="well profile_view">
-                            <div class="col-sm-12">
-                                <h2 class="brief">
-                                    <i>Fecha Limite: <?= (new DateTime('2017-07-28'))->format('d M Y') ?></i>
-                                    <br />
-                                    <strong class="green">Quedan 50 Días</strong>
-                                </h2>
-                                <div class="left col-xs-7">
-                                    <h2><?= \yii\helpers\Html::a('Jesus Leandro Salamanca', Yii::$app->urlManager->createAbsoluteUrl(["clientes/cliente/view", "id" => "1"])) ?></h2>
-                                    <ul class="list-unstyled">
-                                        <li>
-                                            <i class="fa fa-money"></i> <strong>Prestamo:</strong><br />
-                                            <h2>5.000.000</h2>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-line-chart"></i> <strong>Ganancia Esperada:</strong><br />
-                                            <h2>2.000.000</h2>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-briefcase"></i> <strong>Recaudado:</strong><br />
-                                            <h2>1.000.000</h2>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="right col-xs-5 text-center">
-                                    <img src="images/user.png" alt="" class="img-circle img-responsive">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 bottom text-center">
-                                <div class="col-xs-12 col-sm-6 emphasis">
-                                    <p class="ratings">
-                                        <a>4.0</a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star-o"></span></a>
-                                    </p>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 emphasis">
-                                    <button type="button" class="btn btn-success btn-xs"> <i class="fa fa-user">
-                                        </i> <i class="fa fa-comments-o"></i> </button>
-                                    <button type="button" class="btn btn-primary btn-xs">
-                                        <i class="fa fa-user"> </i> View Profile
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
-                        <div class="well profile_view">
-                            <div class="col-sm-12">
-                                <h2 class="brief">
-                                    <i>Fecha Limite: <?= (new DateTime('2017-07-28'))->format('d M Y') ?></i>
-                                    <br />
-                                    <strong class="green">Quedan 50 Días</strong>
-                                </h2>
-                                <div class="left col-xs-7">
-                                    <h2><?= \yii\helpers\Html::a('Jesus Leandro Salamanca', Yii::$app->urlManager->createAbsoluteUrl(["clientes/cliente/view", "id" => "1"])) ?></h2>
-                                    <ul class="list-unstyled">
-                                        <li>
-                                            <i class="fa fa-money"></i> <strong>Prestamo:</strong><br />
-                                            <h2>5.000.000</h2>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-line-chart"></i> <strong>Ganancia Esperada:</strong><br />
-                                            <h2>2.000.000</h2>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-briefcase"></i> <strong>Recaudado:</strong><br />
-                                            <h2>1.000.000</h2>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="right col-xs-5 text-center">
-                                    <img src="images/user.png" alt="" class="img-circle img-responsive">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 bottom text-center">
-                                <div class="col-xs-12 col-sm-6 emphasis">
-                                    <p class="ratings">
-                                        <a>4.0</a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star-o"></span></a>
-                                    </p>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 emphasis">
-                                    <button type="button" class="btn btn-success btn-xs"> <i class="fa fa-user">
-                                        </i> <i class="fa fa-comments-o"></i> </button>
-                                    <button type="button" class="btn btn-primary btn-xs">
-                                        <i class="fa fa-user"> </i> View Profile
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
-                        <div class="well profile_view">
-                            <div class="col-sm-12">
-                                <h2 class="brief">
-                                    <i>Fecha Limite: <?= (new DateTime('2017-07-28'))->format('d M Y') ?></i>
-                                    <br />
-                                    <strong class="green">Quedan 50 Días</strong>
-                                </h2>
-                                <div class="left col-xs-7">
-                                    <h2><?= \yii\helpers\Html::a('Jesus Leandro Salamanca', Yii::$app->urlManager->createAbsoluteUrl(["clientes/cliente/view", "id" => "1"])) ?></h2>
-                                    <ul class="list-unstyled">
-                                        <li>
-                                            <i class="fa fa-money"></i> <strong>Prestamo:</strong><br />
-                                            <h2>5.000.000</h2>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-line-chart"></i> <strong>Ganancia Esperada:</strong><br />
-                                            <h2>2.000.000</h2>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-briefcase"></i> <strong>Recaudado:</strong><br />
-                                            <h2>1.000.000</h2>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="right col-xs-5 text-center">
-                                    <img src="images/user.png" alt="" class="img-circle img-responsive">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 bottom text-center">
-                                <div class="col-xs-12 col-sm-6 emphasis">
-                                    <p class="ratings">
-                                        <a>4.0</a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star"></span></a>
-                                        <a href="#"><span class="fa fa-star-o"></span></a>
-                                    </p>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 emphasis">
-                                    <button type="button" class="btn btn-success btn-xs"> <i class="fa fa-user">
-                                        </i> <i class="fa fa-comments-o"></i> </button>
-                                    <button type="button" class="btn btn-primary btn-xs">
-                                        <i class="fa fa-user"> </i> View Profile
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>

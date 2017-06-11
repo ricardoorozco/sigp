@@ -75,8 +75,8 @@ class SiteController extends Controller {
             \Yii::$app->end();
         }
         if (true) {
-            $clientes = \backend\modules\clientes\models\Cliente::find()->all();
-            return $this->render('index_admin', ['clientes' => $clientes]);
+            $prestamos = \backend\modules\clientes\models\Cliente::find()->all();
+            return $this->render('index_admin', ['prestamos' => $prestamos]);
         }
     }
 
