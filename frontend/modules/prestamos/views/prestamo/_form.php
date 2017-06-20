@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model backend\modules\prestamos\models\Prestamo */
@@ -11,8 +11,14 @@ use yii\widgets\ActiveForm;
 <div class="prestamo-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'cliente_id')->textInput() ?>
+    <?php
+    $fieldOptions1 = [
+        'options' => ['class' => 'form-group has-feedback'],
+        'inputTemplate' => '{input}<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>'
+    ];
+    ?>
+    
+    <?= $form->field($model, 'cliente_id', $fieldOptions1)->dropDownList($clientes, ['placeholder' => 'Cliente...',]) ?>
 
     <?= $form->field($model, 'valor')->textInput() ?>
 

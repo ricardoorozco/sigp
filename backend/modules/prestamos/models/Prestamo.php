@@ -76,4 +76,54 @@ class Prestamo extends \yii\db\ActiveRecord {
         return $this->hasMany(PrestamoGarante::className(), ['prestamo_id' => 'id']);
     }
 
+    public function getDiasMora() {
+        $dias = 0;
+        
+        return $dias;
+    }
+
+    public static function totalPrestamos() {
+        $total = 0;
+        $pestamos = Prestamo::find()->all();
+        foreach ($pestamos as $key => $prestamo) {
+            $total += $prestamo->valor;
+        }
+
+        return $total;
+    }
+
+    public static function totalRecaudos() {
+        $total = 0;
+        $pestamos = Prestamo::find()->all();
+        foreach ($pestamos as $key => $prestamo) {
+            $total += $prestamo->total_abonado;
+        }
+
+        return $total;
+    }
+
+    public static function prestamoPromedio() {
+        $total = 0;
+        $pestamos = Prestamo::find()->all();
+        foreach ($pestamos as $key => $prestamo) {
+            $total += $prestamo->valor;
+        }
+        if (count($pestamos)) {
+            $promedio = $total / count($pestamos);
+        } else {
+            $promedio = 0;
+        }
+        return $promedio;
+    }
+
+    public static function totalPrestamosMora() {
+        $total = 0;
+        $pestamos = Prestamo::find()->where(['<', 'fecha_fin', date("Y-m-d")])->all();
+        foreach ($pestamos as $key => $prestamo) {
+            $total += $prestamo->valor - $prestamo->total_abonado;
+        }
+
+        return $total;
+    }
+
 }

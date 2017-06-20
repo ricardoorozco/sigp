@@ -7,42 +7,42 @@ $this->title = $this->params['h1'] . ' - ' . Yii::$app->name;
 <div class="row tile_count">
     <div class="col-md-3 col-sm-4 col-xs-12 tile_stats_count">
         <span class="count_top"><i class="fa fa-usd"></i> Total Base</span>
-        <div class="count">800.000.000</div>
+        <div class="count"><?= number_format($base, 0, ',', '.') ?></div>
         <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> Esta Semana</span>
     </div>
     <div class="col-md-3 col-sm-4 col-xs-12 tile_stats_count">
         <span class="count_top"><i class="fa fa-usd"></i> Total Prestado</span>
-        <div class="count">670.000.000</div>
+        <div class="count"><?= number_format($totalPrestado, 0, ',', '.') ?></div>
         <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> Esta Semana</span>
     </div>
     <div class="col-md-3 col-sm-4 col-xs-12 tile_stats_count">
         <span class="count_top"><i class="fa fa-usd"></i> Total Recaudado</span>
-        <div class="count">178.654.000</div>
+        <div class="count"><?= number_format($totalRecaudado, 0, ',', '.') ?></div>
         <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> Esta Semana</span>
     </div>
     <div class="col-md-3 col-sm-4 col-xs-12 tile_stats_count">
         <span class="count_top"><i class="fa fa-usd"></i> Gastos Varios</span>
-        <div class="count">7.000.000</div>
+        <div class="count"><?= number_format($totalGastos, 0, ',', '.') ?></div>
         <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> Esta Semana</span>
     </div>
     <div class="col-md-3 col-sm-4 col-xs-12 tile_stats_count">
         <span class="count_top"><i class="fa fa-usd"></i> Prestamo Promedio</span>
-        <div class="count">12.500.000</div>
+        <div class="count"><?= number_format($prestamoPromedio, 0, ',', '.') ?></div>
         <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> Esta Semana</span>
     </div>
     <div class="col-md-3 col-sm-4 col-xs-12 tile_stats_count">
         <span class="count_top"><i class="fa fa-usd"></i> Total Interes Recaudado</span>
-        <div class="count blue">25.000.000</div>
+        <div class="count blue"><?= number_format($totalInteresRecaudado, 0, ',', '.') ?></div>
         <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> Esta Semana</span>
     </div>
     <div class="col-md-3 col-sm-4 col-xs-12 tile_stats_count">
         <span class="count_top"><i class="fa fa-usd"></i> Total En Mora</span>
-        <div class="count red">171.000.000</div>
+        <div class="count red"><?= number_format($totalMora, 0, ',', '.') ?></div>
         <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> Esta Semana</span>
     </div>
     <div class="col-md-3 col-sm-4 col-xs-12 tile_stats_count">
         <span class="count_top"><i class="fa fa-usd"></i> Total En Caja</span>
-        <div class="count green">301.654.000</div>
+        <div class="count green"><?= number_format($totalCaja, 0, ',', '.') ?></div>
         <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> Esta Semana</span>
     </div>
 </div>
@@ -146,6 +146,3 @@ $this->title = $this->params['h1'] . ' - ' . Yii::$app->name;
         </div>
     </div>
 </div>
-<?php
-$this->registerJsFile("@web/js/vendors/fastclick/lib/fastclick.js", [$this::POS_END]);
-$this->registerJsFile("@web/js/vendors/nprogress/nprogress.js", [$this::POS_END]);

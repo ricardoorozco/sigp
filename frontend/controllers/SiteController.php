@@ -76,7 +76,25 @@ class SiteController extends Controller {
         }
         if (true) {
             $prestamos = \backend\modules\prestamos\models\Prestamo::find()->all();
-            return $this->render('index_admin', ['prestamos' => $prestamos]);
+            $base = 200000000;
+            $totalPrestado = \backend\modules\prestamos\models\Prestamo::totalPrestamos();
+            $totalRecaudado = \backend\modules\prestamos\models\Prestamo::totalRecaudos();
+            $totalGastos = 0;
+            $prestamoPromedio = \backend\modules\prestamos\models\Prestamo::prestamoPromedio();
+            $totalInteresRecaudado = 0;
+            $totalMora = \backend\modules\prestamos\models\Prestamo::totalPrestamosMora();
+            $totalCaja = $base - $totalPrestado - $totalGastos + $totalRecaudado;
+            return $this->render('index_admin', [
+                        'prestamos' => $prestamos,
+                        'base' => $base,
+                        'totalPrestado' => $totalPrestado,
+                        'totalRecaudado' => $totalRecaudado,
+                        'totalGastos' => $totalGastos,
+                        'prestamoPromedio' => $prestamoPromedio,
+                        'totalInteresRecaudado' => $totalInteresRecaudado,
+                        'totalMora' => $totalMora,
+                        'totalCaja' => $totalCaja
+            ]);
         }
     }
 

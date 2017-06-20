@@ -10,7 +10,7 @@ use yii\bootstrap\Html;
 <!-- menu prile quick info -->
 <div class="profile">
     <div class="profile_pic">
-        <img src="http://placehold.it/128x128" alt="..." class="img-circle profile_img">
+        <img src="<?= \yii\helpers\Url::base()?>/images/user.png" alt="..." class="img-circle profile_img">
     </div>
     <div class="profile_info">
         <span>Welcome,</span>
@@ -28,42 +28,10 @@ use yii\bootstrap\Html;
                 [
                     "items" => [
                         ["label" => "Escritorio", "url" => Yii::$app->homeUrl, "icon" => "line-chart"],
-                        ["label" => "Clientes", "url" => ["clientes/cliente"], "icon" => "users"],
-                        ["label" => "Error page", "url" => ["site/error-page"], "icon" => "close"],
-                        [
-                            "label" => "Widgets",
-                            "icon" => "th",
-                            "url" => "#",
-                            "items" => [
-                                ["label" => "Menu", "url" => ["site/menu"]],
-                                ["label" => "Panel", "url" => ["site/panel"]],
-                            ],
-                        ],
-                        [
-                            "label" => "Badges",
-                            "url" => "#",
-                            "icon" => "table",
-                            "items" => [
-                                [
-                                    "label" => "Default",
-                                    "url" => "#",
-                                    "badge" => "123",
-                                ],
-                                [
-                                    "label" => "Success",
-                                    "url" => "#",
-                                    "badge" => "new",
-                                    "badgeOptions" => ["class" => "label-success"],
-                                ],
-                                [
-                                    "label" => "Danger",
-                                    "url" => "#",
-                                    "badge" => "!",
-                                    "badgeOptions" => ["class" => "label-danger"],
-                                ],
-                            ],
-                        ],
-                        [
+                        ["label" => "Prestamos", "url" => \yii\helpers\Url::home() . "/prestamos/prestamo", "icon" => "usd"],
+                        ["label" => "Clientes", "url" => \yii\helpers\Url::home() . "/clientes/cliente", "icon" => "users"],
+                        ["label" => "Configuracion", "url" => \yii\helpers\Url::home() . "/parametros/parametro", "icon" => "gear"],
+                        /*[
                             "label" => "Multilevel",
                             "url" => "#",
                             "icon" => "table",
@@ -87,7 +55,7 @@ use yii\bootstrap\Html;
                                     ],
                                 ],
                             ],
-                        ],
+                        ],*/
                     ],
                 ]
         )

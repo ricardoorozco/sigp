@@ -21,6 +21,9 @@ return [
         'prestamos' => [
             'class' => 'backend\modules\prestamos\Prestamos',
         ],
+        'parametros' => [
+            'class' => 'backend\modules\parametros\Parametros',
+        ],
     ],
     'components' => [
         'request' => [
