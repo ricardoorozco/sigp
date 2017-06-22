@@ -74,19 +74,32 @@ $this->title = $this->params['h1'] . ' - ' . Yii::$app->name;
 
                     <?php
                     foreach ($prestamos as $key => $prestamo) {
+
+                        $datetime1 = new DateTime(date("Y-m-d"));
+                        $datetime2 = new DateTime($prestamo->fecha_fin);
+                        $interval = $datetime1->diff($datetime2);
+                        $diasRestantes = (int) $interval->format('%R%a');
                         ?>
                         <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
                             <div class="well profile_view  ui-ribbon-container">
-                                <div class="ui-ribbon-wrapper">
-                                    <div class="ui-ribbon">
-                                        EN MORA
+                                <?php if ($diasRestantes < 0) { ?>
+                                    <div class="ui-ribbon-wrapper">
+                                        <div class="ui-ribbon">
+                                            EN MORA
+                                        </div>
                                     </div>
-                                </div>
+                                <?php } ?>
                                 <div class="col-sm-12">
                                     <h2 class="brief">
                                         <i>Fecha Limite: <?= (new DateTime($prestamo->fecha_fin))->format('d M Y') ?></i>
                                         <br />
-                                        <strong class="red">7 Días de atraso</strong>
+                                        <?php if ($diasRestantes < 0) { ?>
+                                            <strong class="red"><?= $diasRestantes ?> Días de atraso</strong>
+                                        <?php } elseif ($diasRestantes === 0) { ?>
+                                            <strong class="red">VENCE HOY</strong>
+                                        <?php } else { ?>
+                                            <strong class="blue"><?= $diasRestantes ?> Días restantes</strong>
+                                        <?php } ?>
                                     </h2>
                                     <div class="left col-xs-7">
                                         <h2><?= \yii\helpers\Html::a($prestamo->cliente->fullName, Yii::$app->urlManager->createAbsoluteUrl(["clientes/cliente/view", "id" => $prestamo->cliente->id])) ?></h2>

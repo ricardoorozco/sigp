@@ -116,9 +116,7 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/bower/Notifi
         ?>
     </div>
 </div>
-
 <?php
-$this->registerJsFile("@web/js/vendors/jquery/dist/jquery.min.js", [$this::POS_READY]); 
+$this->registerCssFile("@web/js/vendors/pnotify/dist/pnotify.css", [$this::POS_HEAD]);
+$this->registerJsFile("@web/js/vendors/jquery/dist/jquery.min.js", [$this::POS_READY]);
 $this->registerJsFile("@web/js/vendors/pnotify/dist/pnotify.js", [$this::POS_READY]);
-$this->registerJsFile("@web/js/vendors/pnotify/dist/pnotify.buttons.js", [$this::POS_READY]);
-$this->registerJsFile("@web/js/vendors/pnotify/dist/pnotify.nonblock.js", [$this::POS_READY]);
